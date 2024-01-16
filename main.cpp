@@ -149,7 +149,10 @@ int main(int argc, char* argv[]) {
             snake.changeDirection(lastDirection);
 
             if (!snake.checkUnitCollision(snake.getX(), snake.getY(), 1) && !snake.checkSideCollision()) { // Fail condition
-                snake.move();
+                // Don't run while on the start screen
+                if (!start) {
+                    snake.move();
+                }
             }
             else {
                 gameOver = true;
